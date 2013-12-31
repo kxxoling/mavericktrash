@@ -2,7 +2,9 @@
 # -*- coding:utf-8 -*-
 #author: kxxoling
 
-import os, sys
+import os
+import sys
+import shutil
 
 TRASH_PATH = '/System/Library/CoreServices/Dock.app/Contents/Resources'
 FILES = ['trashempty.png',
@@ -12,24 +14,25 @@ FILES = ['trashempty.png',
          'trashfull.png',
          'trashfull@2x.png']
 
-
-def replace_file(somefile, source=os.path.join(os.getcwd(), 'macpro/')):
-    sh = 'sudo cp %s %s' % (os.path.join(source, somefile), os.path.join(TRASH_PATH, somefile))
-    os.popen(sh)
+def replace_file(src, dst=TRASH_PATH, path='macpro/'):
+    path = os.path.join(os.getcwd(), path)
+    src = os.path.join(path, src)
+    try:
+        shutil.copy(src, dst)
+    except IOError:
+        print 'No file named %s, passed.' % (src)
 
 
 def macpro_trash():
     for f in FILES:
         replace_file(f)
-    os.popen('killall Dock')
-    print 'Replce Maverick Trash Icons with MacPro icons successfully!'
+    print '🍺 Replce Maverick Trash Icons with MacPro icons successfully!'
 
 
 def recovery():
     for f in FILES:
-        replace_file(f, source=os.path.join(os.getcwd(), 'maverick/'))
-    os.popen('killall Dock')
-    print 'Recover Maverick Trash Icons successfully!'
+        replace_file(f, path='maverick/')
+    print '🍺 Recover Maverick Trash Icons successfully!'
 
 
 if __name__ == '__main__':
@@ -37,4 +40,5 @@ if __name__ == '__main__':
         macpro_trash()
     elif sys.argv[1] == '-r':
         recovery()
+    print 'Please manually run "killall Dock".'
     print "If this don't work, try to empty your Trash or add something to Trash."
