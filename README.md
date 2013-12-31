@@ -16,4 +16,4 @@ Exceptions
 Thanks
 ------
 
-Thanks to MacPro Trash Icons provider [神楽坂](https://plus.google.com/+%E7%A5%9E%E6%A5%BD%E5%9D%82%E9%9B%AF%E9%BA%97/posts)
+Thanks to MacPro Trash Icons provider [神楽坂雯麗](https://plus.google.com/+%E7%A5%9E%E6%A5%BD%E5%9D%82%E9%9B%AF%E9%BA%97/posts)
